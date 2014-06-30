@@ -16,7 +16,7 @@ before_script:
 - git pull origin gh-pages
 - cd ..
 - rm -f /_bin/hakyll-sandbox.tar.gz
-script: tar -zcvf  ./_bin/hakyll-sandbox.tar.gz ./.cabal-sandbox
+script: tar -zcf  ./_bin/hakyll-sandbox.tar.gz ./.cabal-sandbox
 after_script:
 - cd _bin
 - git status
