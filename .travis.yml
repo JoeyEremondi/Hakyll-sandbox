@@ -4,7 +4,9 @@ branches:
   - master
 ghc:
 - 7.6
-install:
+env:
+  global:
+   - secure: Qq8gROOsn8TB3kBpGkuubVz/njry9qQkaNUi62z6+rlQnIx6WoRag6eQFXQL8cjwfb3/MtpUiqVBMVbcJSaq1kOlpBa+UihBdBCb7IWneODWlwtFI7fwHaP4pojidaHn7is8r/FzY+Z8yZbKpqEy3GfCr+EsWFHdiiA3OfdAuJ0=install:
 - cabal sandbox init
 - cabal install -j hakyll
 before_script:
@@ -23,5 +25,3 @@ after_script:
 - git commit -m "snapshot $(date '+%m/%d/%y %H:%M')"
 - git push "$HAKYLL_SANDBOX_URL" gh-pages >/dev/null 2>&1
 - cd ..
-dd:
-  secure: Qq8gROOsn8TB3kBpGkuubVz/njry9qQkaNUi62z6+rlQnIx6WoRag6eQFXQL8cjwfb3/MtpUiqVBMVbcJSaq1kOlpBa+UihBdBCb7IWneODWlwtFI7fwHaP4pojidaHn7is8r/FzY+Z8yZbKpqEy3GfCr+EsWFHdiiA3OfdAuJ0=
