@@ -1,0 +1,30 @@
+language: haskell
+branches:
+  only:
+  - master
+env:
+  global:
+  - secure: KOMME8RshDgt7013KKe4fuHEh3txtJyPofv+b3+ZqSclsklzpbfL9rke5s7xu3BBEU/QgC0qk0YFHC64luzdSEbL2l44iRtGL/J4dUsKzRak7VfJwg5K2p+HRCwwjexYUPOGGT7F+lPF3H25l8bb84mOcrAL5SsDFdB0DZzq0Hw=
+ghc:
+- 7.6
+install:
+- cabal sandbox init
+- cabal install -j hakyll
+before_script:
+- cd _bin
+- git checkout gh-pages
+- git pull origin gh-pages
+- cd ..
+- rm -f /_bin/hakyll-sandbox.tar.gz
+script: tar -zcvf  ./_bin/hakyll-sandbox.tar.gz ./.cabal-sandbox
+after_script:
+- cd _bin
+- git status
+- git add site.bin
+- git config --global user.email "joey@eremondi.com"
+- git config --global user.name "JoeyEremondi"
+- git commit -m "snapshot $(date '+%m/%d/%y %H:%M')"
+- git push "$HAKYLL_SANDBOX_URL" gh-pages >/dev/null 2>&1
+- cd ..
+dd:
+  secure: mntu451gDJvNSUq1AYe/OwiBmwgpsHE4zKSUlBj6rkSVAvKwJ4FkD1whCsX1WD8i29pAC8QORZvLjLyfCAu05hNtV/Z8v7W22SVr7cvFqcQCkba+aeV9pMaH1gJ8zAsB66Njq8lZzQPjUFCTykd1xm2BUfZbplPXziOO4/oWBOE=
